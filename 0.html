@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        function fn(n) {
+            let arr = [];
+            let flag = true;
+            if (typeof(n) == 'number') {
+                // 第一次遍历，在数组中添加数据
+                for (let i = 0; i < n; i++) {
+                    let num = Math.ceil(Math.random() * 30 + 2);
+                    if (flag) {
+                        arr.push(num);
+                        flag = false;
+                    }
+                    // 再遍历一次，排除 num 和数组中已存在的数字重复
+                    for (let j = 0; j < arr.length; j++) {
+                        if (num != arr[j]) {
+                            arr.push(num);
+                        } else {
+                            // 若重复的话，就再 random 一次看，如果没重复就添加进去，直至数组中总数据达到 n 个
+                            i--;
+                        }
+                    }
+                }
+                return arr;
+            } else {
+                alert("no");
+            }
+        }
+        console.log(fn(10));
+    </script>
+</body>
+
+</html>
